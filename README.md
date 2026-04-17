@@ -1,4 +1,4 @@
-Juya News Card
+本项目是Juya News Card的改进版。详情请看下文。
 一个基于 AI 的智能内容卡片生成工具，支持 Markdown 和 JSON 双格式输入，一键生成精美可视化卡片。
 
 ✨ 核心特性
