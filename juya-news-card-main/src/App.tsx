@@ -21,8 +21,10 @@ import {
   PlayArrow,
   Tune,
   Image as ImageIcon,
+  TextSnippet,
 } from '@mui/icons-material';
 import { generateCardContent } from './services/openaiService';
+import { JSON_SYSTEM_PROMPT, MARKDOWN_SYSTEM_PROMPT } from './services/llm-prompt';
 import {
   fetchBackendLlmRuntimeConfig,
   type BackendLlmRuntimeConfig,
@@ -52,7 +54,7 @@ import { useAppKeyboardShortcuts } from './hooks/use-app-keyboard-shortcuts';
 import { useCdnIconList } from './hooks/use-cdn-icon-list';
 import mockData from '../tests/mock-data.json';
 
-const SIDEBAR_WIDTH = 360;
+const SIDEBAR_WIDTH = 520;
 const TEMPLATE_SELECTOR_WIDTH = 280;
 const MOCK_SCENARIOS = mockData as GeneratedContent[];
 const EXAMPLE_TEXT = `DeepSeek-V3 是一款拥有 6710 亿参数的混合专家（MoE）语言模型，每 token 激活参数为 370 亿。它在高达 14.8 万亿 token 的数据集上进行了训练。在训练过程中，采用多头潜在注意力机制（MLA）来提高推理效率，并利用 DeepSeekMoE 架构进行具有辅助无损负载均衡的训练。
@@ -69,6 +71,8 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [downloadingHtml, setDownloadingHtml] = useState(false);
   const [downloadingImage, setDownloadingImage] = useState(false);
+  const [copiedJsonPrompt, setCopiedJsonPrompt] = useState(false);
+  const [copiedMarkdownPrompt, setCopiedMarkdownPrompt] = useState(false);
   const [data, setData] = useState<GeneratedContent | null>(initialData);
   const [scale, setScale] = useState(0.5);
   const [templateId, setTemplateId] = useState(DEFAULT_TEMPLATE);
@@ -399,6 +403,28 @@ const App: React.FC = () => {
     }
   };
 
+  const handleCopyJsonPrompt = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(JSON_SYSTEM_PROMPT);
+      setCopiedJsonPrompt(true);
+      showToast('JSON 提示词已复制到剪贴板', 'success');
+      setTimeout(() => setCopiedJsonPrompt(false), 2000);
+    } catch (error) {
+      showToast('复制失败，请手动复制', 'error');
+    }
+  }, [showToast]);
+
+  const handleCopyMarkdownPrompt = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(MARKDOWN_SYSTEM_PROMPT);
+      setCopiedMarkdownPrompt(true);
+      showToast('Markdown 提示词已复制到剪贴板', 'success');
+      setTimeout(() => setCopiedMarkdownPrompt(false), 2000);
+    } catch (error) {
+      showToast('复制失败，请手动复制', 'error');
+    }
+  }, [showToast]);
+
   return (
     <Box sx={{
       display: 'flex',
@@ -510,6 +536,26 @@ const App: React.FC = () => {
                     disabled={loading || !inputText.trim()}
                     sx={{ cursor: 'pointer', height: 24, fontSize: 12, minWidth: 80 }}
                   />
+                  <Tooltip title={copiedJsonPrompt ? 'JSON 提示词已复制' : '复制 JSON 提示词'}>
+                    <Chip
+                      label={copiedJsonPrompt ? '已复制' : 'JSON 提示'}
+                      size="small"
+                      variant="outlined"
+                      icon={copiedJsonPrompt ? <CheckCircle sx={{ fontSize: 14 }} /> : <TextSnippet sx={{ fontSize: 14 }} />}
+                      onClick={handleCopyJsonPrompt}
+                      sx={{ cursor: 'pointer', height: 24, fontSize: 12 }}
+                    />
+                  </Tooltip>
+                  <Tooltip title={copiedMarkdownPrompt ? 'Markdown 提示词已复制' : '复制 Markdown 提示词'}>
+                    <Chip
+                      label={copiedMarkdownPrompt ? '已复制' : 'MD 提示'}
+                      size="small"
+                      variant="outlined"
+                      icon={copiedMarkdownPrompt ? <CheckCircle sx={{ fontSize: 14 }} /> : <TextSnippet sx={{ fontSize: 14 }} />}
+                      onClick={handleCopyMarkdownPrompt}
+                      sx={{ cursor: 'pointer', height: 24, fontSize: 12 }}
+                    />
+                  </Tooltip>
                 </Box>
                 <TextField
                   multiline

@@ -4,7 +4,7 @@ import { TEMPLATES } from '../src/templates';
 import type { GeneratedContent } from '../src/types';
 import { parseJsonToContent, parseMarkdownToContent } from '../src/utils/markdown-content';
 import { sanitizeDescHtml } from '../src/utils/desc-format';
-import { DEFAULT_SYSTEM_PROMPT } from '../src/services/llm-prompt';
+import { JSON_SYSTEM_PROMPT } from '../src/services/llm-prompt';
 import { DEFAULT_ICON_FALLBACK, normalizeIconToken, splitIconCandidates } from '../src/utils/icon-mapping';
 import { loadIconCatalogFromCdn } from '../src/utils/icon-cdn-catalog';
 import { resolveIconMappingRuntimeConfig } from '../src/utils/icon-config';
@@ -210,7 +210,7 @@ export async function generateContent(inputTextRaw: unknown, authHeader: string 
       top_p: LLM_TOP_P_DEFAULT,
       ...(LLM_MAX_TOKENS_DEFAULT > 0 ? { max_tokens: LLM_MAX_TOKENS_DEFAULT } : {}),
       messages: [
-        { role: 'system', content: DEFAULT_SYSTEM_PROMPT },
+        { role: 'system', content: JSON_SYSTEM_PROMPT },
         { role: 'user', content: inputText },
       ],
     });
