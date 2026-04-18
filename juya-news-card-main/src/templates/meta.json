@@ -1850,6 +1850,706 @@
       "icon": "format_align_left",
       "downloadable": true,
       "ssrReady": true
+    },
+    "lineDiamond": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineDiamond.tsx",
+      "fileSize": 7500,
+      "name": "菱形宝石",
+      "description": "菱形多边形装饰，优雅奢华",
+      "icon": "diamond",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineSpiral": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineSpiral.tsx",
+      "fileSize": 7500,
+      "name": "螺旋优雅",
+      "description": "螺旋曲线装饰，流动优雅",
+      "icon": "circle",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineRadiant": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineRadiant.tsx",
+      "fileSize": 7500,
+      "name": "放射光芒",
+      "description": "放射状线条，温暖光芒",
+      "icon": "wb_sunny",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineMountain": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineMountain.tsx",
+      "fileSize": 7200,
+      "name": "山脉折线",
+      "description": "山脉折线装饰，稳重内敛",
+      "icon": "landscape",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineDotline": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineDotline.tsx",
+      "fileSize": 7500,
+      "name": "点线组合",
+      "description": "圆点与线条交替，柔和灵动",
+      "icon": "blur_on",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineWavecut": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineWavecut.tsx",
+      "fileSize": 7200,
+      "name": "曲线分割",
+      "description": "波浪曲线分隔，清澈流动",
+      "icon": "waves",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineFrameArt": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineFrame.tsx",
+      "fileSize": 7500,
+      "name": "极简边框",
+      "description": "嵌套矩形边框，古铜质感",
+      "icon": "crop_square",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineDotmatrix": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineDotmatrix.tsx",
+      "fileSize": 7500,
+      "name": "点阵装饰",
+      "description": "渐变点阵布局，深邃稳重",
+      "icon": "grid_on",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineDashflow": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineDashflow.tsx",
+      "fileSize": 7500,
+      "name": "流动虚线",
+      "description": "流动虚线装饰，清新通透",
+      "icon": "horizontal_distribute",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineZigzag": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineZigzag.tsx",
+      "fileSize": 7500,
+      "name": "锯齿波浪",
+      "description": "锯齿波浪折线，锐利节奏感",
+      "icon": "show_chart",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtMondrian": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtMondrian.tsx",
+      "fileSize": 7500,
+      "name": "蒙德里安色块",
+      "description": "红蓝黄几何色块，风格派经典",
+      "icon": "grid_on",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtKandinsky": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtKandinsky.tsx",
+      "fileSize": 7500,
+      "name": "康定斯基圆环",
+      "description": "同心圆与线条，抽象韵律",
+      "icon": "circle",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtMartin": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtMartin.tsx",
+      "fileSize": 7500,
+      "name": "阿格尼丝网格",
+      "description": "极细网格线条，冥想宁静",
+      "icon": "grid_4x4",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtRiley": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtRiley.tsx",
+      "fileSize": 7500,
+      "name": "莱利视幻",
+      "description": "波动线条视错觉，动态韵律",
+      "icon": "waves",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtNewman": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtNewman.tsx",
+      "fileSize": 7500,
+      "name": "纽曼拉链",
+      "description": "垂直拉链线条，崇高庄严",
+      "icon": "vertical_align_center",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtStella": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtStella.tsx",
+      "fileSize": 7500,
+      "name": "斯特拉几何",
+      "description": "同心几何嵌套，精确秩序",
+      "icon": "hexagon",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtKusama": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtKusama.tsx",
+      "fileSize": 7500,
+      "name": "草间弥生点",
+      "description": "无限圆点阵列，迷幻沉浸",
+      "icon": "bubble_chart",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtKlee": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtKlee.tsx",
+      "fileSize": 7500,
+      "name": "克利童趣",
+      "description": "童趣色块线条，诗意天真",
+      "icon": "palette",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtMiro": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtMiro.tsx",
+      "fileSize": 7500,
+      "name": "米罗有机",
+      "description": "有机曲线符号，梦幻诗意",
+      "icon": "gesture",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtArp": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtArp.tsx",
+      "fileSize": 7500,
+      "name": "阿普生物",
+      "description": "生物形态轮廓，自然有机",
+      "icon": "nature",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtDeco": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtDeco.tsx",
+      "fileSize": 7500,
+      "name": "装饰艺术",
+      "description": "Art Deco几何线条，奢华经典",
+      "icon": "diamond",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtNouveau": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtNouveau.tsx",
+      "fileSize": 7500,
+      "name": "新艺术",
+      "description": "Art Nouveau曲线，优雅浪漫",
+      "icon": "local_florist",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtConstruct": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtConstruct.tsx",
+      "fileSize": 7500,
+      "name": "构成主义",
+      "description": "红色斜线构成，革命先锋",
+      "icon": "change_history",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtDeStijl": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtDeStijl.tsx",
+      "fileSize": 7500,
+      "name": "风格派",
+      "description": "De Stijl直线色块，理性纯粹",
+      "icon": "crop_square",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtOpArt": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtOpArt.tsx",
+      "fileSize": 7500,
+      "name": "欧普艺术",
+      "description": "光学幻觉线条，动感视幻",
+      "icon": "blur_circular",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtInkWash": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtInkWash.tsx",
+      "fileSize": 7500,
+      "name": "水墨渲染",
+      "description": "水墨晕染效果，东方意境",
+      "icon": "brush",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtCalligraphy": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtCalligraphy.tsx",
+      "fileSize": 7500,
+      "name": "书法笔触",
+      "description": "毛笔书法线条，气韵生动",
+      "icon": "gesture",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtBamboo": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtBamboo.tsx",
+      "fileSize": 7500,
+      "name": "竹节清韵",
+      "description": "竹节线条装饰，清雅脱俗",
+      "icon": "park",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtLandscape": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtLandscape.tsx",
+      "fileSize": 7500,
+      "name": "远山淡影",
+      "description": "淡远山形轮廓，空灵悠远",
+      "icon": "landscape",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtCoral": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtCoral.tsx",
+      "fileSize": 7500,
+      "name": "珊瑚暖调",
+      "description": "珊瑚色温暖线条，柔美亲和",
+      "icon": "coral",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtSapphire": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtSapphire.tsx",
+      "fileSize": 7500,
+      "name": "蓝宝石",
+      "description": "蓝宝石深邃线条，沉稳高贵",
+      "icon": "diamond",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtAmethyst": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtAmethyst.tsx",
+      "fileSize": 7500,
+      "name": "紫水晶",
+      "description": "紫水晶神秘线条，优雅神秘",
+      "icon": "auto_awesome",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtTopaz": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtTopaz.tsx",
+      "fileSize": 7500,
+      "name": "托帕石",
+      "description": "托帕石金色线条，温暖明亮",
+      "icon": "wb_sunny",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtTerracotta": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtTerracotta.tsx",
+      "fileSize": 7500,
+      "name": "陶土暖意",
+      "description": "陶土色质朴线条，温暖自然",
+      "icon": "architecture",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtSage": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtSage.tsx",
+      "fileSize": 7500,
+      "name": "鼠尾草绿",
+      "description": "鼠尾草绿柔线条，清新治愈",
+      "icon": "eco",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtSlate": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtSlate.tsx",
+      "fileSize": 7500,
+      "name": "石板灰调",
+      "description": "石板灰冷峻线条，理性克制",
+      "icon": "layers",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtOrchid": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtOrchid.tsx",
+      "fileSize": 7500,
+      "name": "兰花紫韵",
+      "description": "兰花紫优雅线条，高贵淡雅",
+      "icon": "local_florist",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtCedar": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtCedar.tsx",
+      "fileSize": 7500,
+      "name": "雪松棕调",
+      "description": "雪松棕沉稳线条，厚重可靠",
+      "icon": "forest",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtIndigo": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtIndigo.tsx",
+      "fileSize": 7500,
+      "name": "靛蓝深邃",
+      "description": "靛蓝深邃线条，沉静内敛",
+      "icon": "nightlight",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineArtRose": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line/lineArtRose.tsx",
+      "fileSize": 7500,
+      "name": "玫瑰金韵",
+      "description": "玫瑰金精致线条，柔美奢华",
+      "icon": "favorite",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineMinimal": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineMinimal.tsx",
+      "fileSize": 5000,
+      "name": "极简细线",
+      "description": "极简单线标题，至简至美",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineElegant": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineElegant.tsx",
+      "fileSize": 5000,
+      "name": "优雅金线",
+      "description": "金色优雅标题，高端精致",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineBold": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineBold.tsx",
+      "fileSize": 5000,
+      "name": "大气粗线",
+      "description": "粗线大气标题，力量感强",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCenter": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCenter.tsx",
+      "fileSize": 5000,
+      "name": "居中对称",
+      "description": "居中对称布局，庄重典雅",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineLeft": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineLeft.tsx",
+      "fileSize": 5000,
+      "name": "左对齐雅致",
+      "description": "左对齐标题，简洁干练",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineSplit": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineSplit.tsx",
+      "fileSize": 5000,
+      "name": "分割双线",
+      "description": "双线分割标题，层次分明",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineFrame": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineFrame.tsx",
+      "fileSize": 5000,
+      "name": "框线标题",
+      "description": "矩形框线围合，结构感强",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineDiamond": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineDiamond.tsx",
+      "fileSize": 5000,
+      "name": "菱形标题",
+      "description": "菱形装饰标题，几何美感",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCircle": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCircle.tsx",
+      "fileSize": 5000,
+      "name": "圆环标题",
+      "description": "圆环围绕标题，包容完整",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineWave": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineWave.tsx",
+      "fileSize": 5000,
+      "name": "波浪标题",
+      "description": "波浪曲线标题，流动韵律",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineMountain": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineMountain.tsx",
+      "fileSize": 5000,
+      "name": "山形标题",
+      "description": "山形轮廓标题，沉稳大气",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineZigzag": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineZigzag.tsx",
+      "fileSize": 5000,
+      "name": "锯齿标题",
+      "description": "锯齿折线标题，锐利节奏",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineDot": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineDot.tsx",
+      "fileSize": 5000,
+      "name": "点阵标题",
+      "description": "点阵装饰标题，现代科技",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineDash": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineDash.tsx",
+      "fileSize": 5000,
+      "name": "虚线标题",
+      "description": "虚线装饰标题，轻盈通透",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCross": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCross.tsx",
+      "fileSize": 5000,
+      "name": "十字标题",
+      "description": "十字交叉标题，对称秩序",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineSpiral": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineSpiral.tsx",
+      "fileSize": 5000,
+      "name": "螺旋标题",
+      "description": "螺旋曲线标题，优雅旋转",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineRadiant": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineRadiant.tsx",
+      "fileSize": 5000,
+      "name": "放射标题",
+      "description": "放射线条标题，光芒四射",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineParallel": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineParallel.tsx",
+      "fileSize": 5000,
+      "name": "平行标题",
+      "description": "平行线标题，节奏韵律",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineGrid": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineGrid.tsx",
+      "fileSize": 5000,
+      "name": "网格标题",
+      "description": "网格线条标题，结构秩序",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineFlow": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineFlow.tsx",
+      "fileSize": 5000,
+      "name": "流动标题",
+      "description": "流动曲线标题，自然流畅",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineOrbit": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineOrbit.tsx",
+      "fileSize": 5000,
+      "name": "轨道标题",
+      "description": "椭圆轨道标题，宇宙韵律",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCorner": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCorner.tsx",
+      "fileSize": 5000,
+      "name": "折角标题",
+      "description": "L形折角标题，几何结构",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineNouveau": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineNouveau.tsx",
+      "fileSize": 5000,
+      "name": "新艺术标题",
+      "description": "Art Nouveau曲线标题",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineDeco": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineDeco.tsx",
+      "fileSize": 5000,
+      "name": "装饰标题",
+      "description": "Art Deco几何标题",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineInk": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineInk.tsx",
+      "fileSize": 5000,
+      "name": "水墨标题",
+      "description": "水墨晕染标题，东方意境",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCalligraphy": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCalligraphy.tsx",
+      "fileSize": 5000,
+      "name": "书法标题",
+      "description": "毛笔书法标题，气韵生动",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineBamboo": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineBamboo.tsx",
+      "fileSize": 5000,
+      "name": "竹韵标题",
+      "description": "竹节线条标题，清雅脱俗",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineCoral": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineCoral.tsx",
+      "fileSize": 5000,
+      "name": "珊瑚标题",
+      "description": "珊瑚暖色标题，温暖亲和",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineSapphire": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineSapphire.tsx",
+      "fileSize": 5000,
+      "name": "蓝宝标题",
+      "description": "蓝宝石标题，深邃高贵",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "coverLineRose": {
+      "modifiedTime": 1776531984,
+      "filePath": "src/templates/minimal-line-cover/coverLineRose.tsx",
+      "fileSize": 5000,
+      "name": "玫瑰标题",
+      "description": "玫瑰金标题，柔美精致",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
     }
   }
 }

@@ -8,8 +8,15 @@ export interface ThemeCategory {
 }
 
 export const THEME_CATEGORIES: ThemeCategory[] = [
-  // 极简线条 - 10个线条装饰模板
+  // 极简线条封面 - 放在最上方
+  { id: 'minimal-line-cover', name: '极简线条封面', icon: 'title', themeIds: ['coverLineMinimal', 'coverLineElegant', 'coverLineBold', 'coverLineCenter', 'coverLineLeft', 'coverLineSplit', 'coverLineFrame', 'coverLineDiamond', 'coverLineCircle', 'coverLineWave', 'coverLineMountain', 'coverLineZigzag', 'coverLineDot', 'coverLineDash', 'coverLineCross', 'coverLineSpiral', 'coverLineRadiant', 'coverLineParallel', 'coverLineGrid', 'coverLineFlow', 'coverLineOrbit', 'coverLineCorner', 'coverLineNouveau', 'coverLineDeco', 'coverLineInk', 'coverLineCalligraphy', 'coverLineBamboo', 'coverLineCoral', 'coverLineSapphire', 'coverLineRose'] },
+
+  // 极简线条 - 18个线条装饰模板
   { id: 'minimal-line', name: '极简线条', icon: 'horizontal_rule', themeIds: ['lineFine', 'lineDashed', 'lineCorner', 'lineOrbit', 'lineFlow', 'lineGrid', 'lineCross', 'lineParallel', 'lineDiamond', 'lineSpiral', 'lineRadiant', 'lineMountain', 'lineDotline', 'lineWavecut', 'lineFrameArt', 'lineDotmatrix', 'lineDashflow', 'lineZigzag'] },
+
+  { id: 'minimal-line-glm', name: '极简线条（GLM版）', icon: 'horizontal_rule', themeIds: ['lineArtMondrian', 'lineArtKandinsky', 'lineArtMartin', 'lineArtRiley', 'lineArtNewman', 'lineArtStella', 'lineArtKusama', 'lineArtKlee', 'lineArtMiro', 'lineArtArp', 'lineArtDeco', 'lineArtNouveau', 'lineArtConstruct', 'lineArtDeStijl', 'lineArtOpArt', 'lineArtInkWash', 'lineArtCalligraphy', 'lineArtBamboo', 'lineArtLandscape', 'lineArtCoral', 'lineArtSapphire', 'lineArtAmethyst', 'lineArtTopaz', 'lineArtTerracotta', 'lineArtSage', 'lineArtSlate', 'lineArtOrchid', 'lineArtCedar', 'lineArtIndigo', 'lineArtRose'] },
+
+
 
   // 简约线条
   { id: 'simple-line', name: '简约线条', icon: 'remove', themeIds: ['lineMinimal', 'lineGridCard', 'lineFrame', 'lineAccent', 'lineBox', 'lineDivider'] },

@@ -95,6 +95,76 @@ import { lineDotmatrix } from './minimal-line/lineDotmatrix';
 import { lineDashflow } from './minimal-line/lineDashflow';
 import { lineZigzag } from './minimal-line/lineZigzag';
 
+// 极简线条GLM版 - 30个
+import { lineArtMondrian } from './minimal-line/lineArtMondrian';
+import { lineArtKandinsky } from './minimal-line/lineArtKandinsky';
+import { lineArtMartin } from './minimal-line/lineArtMartin';
+import { lineArtRiley } from './minimal-line/lineArtRiley';
+import { lineArtNewman } from './minimal-line/lineArtNewman';
+import { lineArtStella } from './minimal-line/lineArtStella';
+import { lineArtKusama } from './minimal-line/lineArtKusama';
+import { lineArtKlee } from './minimal-line/lineArtKlee';
+import { lineArtMiro } from './minimal-line/lineArtMiro';
+import { lineArtArp } from './minimal-line/lineArtArp';
+import { lineArtDeco } from './minimal-line/lineArtDeco';
+import { lineArtNouveau } from './minimal-line/lineArtNouveau';
+import { lineArtConstruct } from './minimal-line/lineArtConstruct';
+import { lineArtDeStijl } from './minimal-line/lineArtDeStijl';
+import { lineArtOpArt } from './minimal-line/lineArtOpArt';
+import { lineArtInkWash } from './minimal-line/lineArtInkWash';
+import { lineArtCalligraphy } from './minimal-line/lineArtCalligraphy';
+import { lineArtBamboo } from './minimal-line/lineArtBamboo';
+import { lineArtLandscape } from './minimal-line/lineArtLandscape';
+import { lineArtCoral } from './minimal-line/lineArtCoral';
+import { lineArtSapphire } from './minimal-line/lineArtSapphire';
+import { lineArtAmethyst } from './minimal-line/lineArtAmethyst';
+import { lineArtTopaz } from './minimal-line/lineArtTopaz';
+import { lineArtTerracotta } from './minimal-line/lineArtTerracotta';
+import { lineArtSage } from './minimal-line/lineArtSage';
+import { lineArtSlate } from './minimal-line/lineArtSlate';
+import { lineArtOrchid } from './minimal-line/lineArtOrchid';
+import { lineArtCedar } from './minimal-line/lineArtCedar';
+import { lineArtIndigo } from './minimal-line/lineArtIndigo';
+import { lineArtRose } from './minimal-line/lineArtRose';
+
+// 极简线条封面 - 30个
+import { coverLineMinimal } from './minimal-line-cover/coverLineMinimal';
+import { coverLineElegant } from './minimal-line-cover/coverLineElegant';
+import { coverLineBold } from './minimal-line-cover/coverLineBold';
+import { coverLineCenter } from './minimal-line-cover/coverLineCenter';
+import { coverLineLeft } from './minimal-line-cover/coverLineLeft';
+import { coverLineSplit } from './minimal-line-cover/coverLineSplit';
+import { coverLineFrame } from './minimal-line-cover/coverLineFrame';
+import { coverLineDiamond } from './minimal-line-cover/coverLineDiamond';
+import { coverLineCircle } from './minimal-line-cover/coverLineCircle';
+import { coverLineWave } from './minimal-line-cover/coverLineWave';
+import { coverLineMountain } from './minimal-line-cover/coverLineMountain';
+import { coverLineZigzag } from './minimal-line-cover/coverLineZigzag';
+import { coverLineDot } from './minimal-line-cover/coverLineDot';
+import { coverLineDash } from './minimal-line-cover/coverLineDash';
+import { coverLineCross } from './minimal-line-cover/coverLineCross';
+import { coverLineSpiral } from './minimal-line-cover/coverLineSpiral';
+import { coverLineRadiant } from './minimal-line-cover/coverLineRadiant';
+import { coverLineParallel } from './minimal-line-cover/coverLineParallel';
+import { coverLineGrid } from './minimal-line-cover/coverLineGrid';
+import { coverLineFlow } from './minimal-line-cover/coverLineFlow';
+import { coverLineOrbit } from './minimal-line-cover/coverLineOrbit';
+import { coverLineCorner } from './minimal-line-cover/coverLineCorner';
+import { coverLineNouveau } from './minimal-line-cover/coverLineNouveau';
+import { coverLineDeco } from './minimal-line-cover/coverLineDeco';
+import { coverLineInk } from './minimal-line-cover/coverLineInk';
+import { coverLineCalligraphy } from './minimal-line-cover/coverLineCalligraphy';
+import { coverLineBamboo } from './minimal-line-cover/coverLineBamboo';
+import { coverLineCoral } from './minimal-line-cover/coverLineCoral';
+import { coverLineSapphire } from './minimal-line-cover/coverLineSapphire';
+import { coverLineRose } from './minimal-line-cover/coverLineRose';
+
+// 极简线条GLM版 - 30个
+// 极简线条封面 - 30个
+// 极简线条GLM版 - 30个
+// 极简线条封面 - 30个
+// 极简线条GLM版 - 30个
+// 极简线条封面 - 30个
 // 简约线条模板
 import { lineMinimalTemplate } from './lineMinimal';
 import { lineGridCardTemplate } from './lineGridCard';
@@ -550,6 +620,70 @@ export const TEMPLATES: TemplateMap = {
   lineDotmatrix: lineDotmatrix,
   lineDashflow: lineDashflow,
   lineZigzag: lineZigzag,
+
+  // 极简线条GLM版 - 30个
+  lineArtMondrian: lineArtMondrian,
+  lineArtKandinsky: lineArtKandinsky,
+  lineArtMartin: lineArtMartin,
+  lineArtRiley: lineArtRiley,
+  lineArtNewman: lineArtNewman,
+  lineArtStella: lineArtStella,
+  lineArtKusama: lineArtKusama,
+  lineArtKlee: lineArtKlee,
+  lineArtMiro: lineArtMiro,
+  lineArtArp: lineArtArp,
+  lineArtDeco: lineArtDeco,
+  lineArtNouveau: lineArtNouveau,
+  lineArtConstruct: lineArtConstruct,
+  lineArtDeStijl: lineArtDeStijl,
+  lineArtOpArt: lineArtOpArt,
+  lineArtInkWash: lineArtInkWash,
+  lineArtCalligraphy: lineArtCalligraphy,
+  lineArtBamboo: lineArtBamboo,
+  lineArtLandscape: lineArtLandscape,
+  lineArtCoral: lineArtCoral,
+  lineArtSapphire: lineArtSapphire,
+  lineArtAmethyst: lineArtAmethyst,
+  lineArtTopaz: lineArtTopaz,
+  lineArtTerracotta: lineArtTerracotta,
+  lineArtSage: lineArtSage,
+  lineArtSlate: lineArtSlate,
+  lineArtOrchid: lineArtOrchid,
+  lineArtCedar: lineArtCedar,
+  lineArtIndigo: lineArtIndigo,
+  lineArtRose: lineArtRose,
+
+  // 极简线条封面 - 30个
+  coverLineMinimal: coverLineMinimal,
+  coverLineElegant: coverLineElegant,
+  coverLineBold: coverLineBold,
+  coverLineCenter: coverLineCenter,
+  coverLineLeft: coverLineLeft,
+  coverLineSplit: coverLineSplit,
+  coverLineFrame: coverLineFrame,
+  coverLineDiamond: coverLineDiamond,
+  coverLineCircle: coverLineCircle,
+  coverLineWave: coverLineWave,
+  coverLineMountain: coverLineMountain,
+  coverLineZigzag: coverLineZigzag,
+  coverLineDot: coverLineDot,
+  coverLineDash: coverLineDash,
+  coverLineCross: coverLineCross,
+  coverLineSpiral: coverLineSpiral,
+  coverLineRadiant: coverLineRadiant,
+  coverLineParallel: coverLineParallel,
+  coverLineGrid: coverLineGrid,
+  coverLineFlow: coverLineFlow,
+  coverLineOrbit: coverLineOrbit,
+  coverLineCorner: coverLineCorner,
+  coverLineNouveau: coverLineNouveau,
+  coverLineDeco: coverLineDeco,
+  coverLineInk: coverLineInk,
+  coverLineCalligraphy: coverLineCalligraphy,
+  coverLineBamboo: coverLineBamboo,
+  coverLineCoral: coverLineCoral,
+  coverLineSapphire: coverLineSapphire,
+  coverLineRose: coverLineRose,
 
   // 简约线条模板
   lineMinimal: lineMinimalTemplate,
