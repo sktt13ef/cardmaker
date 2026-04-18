@@ -24,6 +24,7 @@ import {
   Code,
 } from '@mui/icons-material';
 import { md3Colors } from '../theme/md3-theme';
+import { copyToClipboard, readFromClipboard } from '../utils/clipboard';
 import {
   ProgressBarConfig,
   SingleProgressBarConfig,
@@ -116,15 +117,11 @@ const ProgressBarDetailPanel: React.FC<ProgressBarDetailPanelProps> = ({
     onChange({ ...DEFAULT_PROGRESS_BAR_CONFIG });
   };
 
-  const handleCopyExample = () => {
+  const handleCopyExample = async () => {
     const jsonStr = JSON.stringify(EXAMPLE_CONFIG, null, 2);
-    navigator.clipboard.writeText(jsonStr).then(() => {
-      setSnackbarMessage('Example config copied to clipboard');
-      setSnackbarOpen(true);
-    }).catch(() => {
-      setSnackbarMessage('Copy failed');
-      setSnackbarOpen(true);
-    });
+    const ok = await copyToClipboard(jsonStr);
+    setSnackbarMessage(ok ? 'Example config copied to clipboard' : 'Copy failed');
+    setSnackbarOpen(true);
   };
 
   const handleExportConfig = () => {
@@ -166,26 +163,27 @@ const ProgressBarDetailPanel: React.FC<ProgressBarDetailPanelProps> = ({
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const handlePasteConfig = () => {
-    navigator.clipboard.readText().then((text) => {
-      try {
-        const imported = JSON.parse(text) as ProgressBarConfig;
-        if (imported.top && imported.bottom) {
-          onChange(imported);
-          setSnackbarMessage('Imported from clipboard');
-          setSnackbarOpen(true);
-        } else {
-          setSnackbarMessage('Invalid clipboard content');
-          setSnackbarOpen(true);
-        }
-      } catch {
-        setSnackbarMessage('Parse failed');
-        setSnackbarOpen(true);
-      }
-    }).catch(() => {
+  const handlePasteConfig = async () => {
+    const text = await readFromClipboard();
+    if (text === null) {
       setSnackbarMessage('Cannot read clipboard');
       setSnackbarOpen(true);
-    });
+      return;
+    }
+    try {
+      const imported = JSON.parse(text) as ProgressBarConfig;
+      if (imported.top && imported.bottom) {
+        onChange(imported);
+        setSnackbarMessage('Imported from clipboard');
+        setSnackbarOpen(true);
+      } else {
+        setSnackbarMessage('Invalid clipboard content');
+        setSnackbarOpen(true);
+      }
+    } catch {
+      setSnackbarMessage('Parse failed');
+      setSnackbarOpen(true);
+    }
   };
 
   const renderSingleProgressBarEditor = (position: TabPosition) => {

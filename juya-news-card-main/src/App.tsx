@@ -42,6 +42,7 @@ import {
   loadTemplateConfig,
 } from './templates/client-registry';
 import { contentToMarkdown, parseMarkdownToContent } from './utils/markdown-content';
+import { copyToClipboard } from './utils/clipboard';
 import type { AppGlobalSettings } from './utils/global-settings';
 import {
   createDefaultGlobalSettings,
@@ -396,23 +397,23 @@ const App: React.FC = () => {
   };
 
   const handleCopyJsonPrompt = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(JSON_SYSTEM_PROMPT);
+    const ok = await copyToClipboard(JSON_SYSTEM_PROMPT);
+    if (ok) {
       setCopiedJsonPrompt(true);
       showToast('JSON 提示词已复制到剪贴板', 'success');
       setTimeout(() => setCopiedJsonPrompt(false), 2000);
-    } catch (error) {
+    } else {
       showToast('复制失败，请手动复制', 'error');
     }
   }, [showToast]);
 
   const handleCopyMarkdownPrompt = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(MARKDOWN_SYSTEM_PROMPT);
+    const ok = await copyToClipboard(MARKDOWN_SYSTEM_PROMPT);
+    if (ok) {
       setCopiedMarkdownPrompt(true);
       showToast('Markdown 提示词已复制到剪贴板', 'success');
       setTimeout(() => setCopiedMarkdownPrompt(false), 2000);
-    } catch (error) {
+    } else {
       showToast('复制失败，请手动复制', 'error');
     }
   }, [showToast]);
@@ -790,7 +791,7 @@ const App: React.FC = () => {
             <Tooltip title="复制模板ID">
               <IconButton
                 size="small"
-                onClick={() => navigator.clipboard.writeText(templateId)}
+                onClick={() => { copyToClipboard(templateId); }}
                 sx={{ width: 28, height: 28, color: '#9E9A94' }}
               >
                 <ContentCopy sx={{ fontSize: 14 }} />

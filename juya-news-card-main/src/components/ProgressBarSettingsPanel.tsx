@@ -25,6 +25,7 @@ import {
   AutoAwesome,
 } from '@mui/icons-material';
 import { md3Colors } from '../theme/md3-theme';
+import { copyToClipboard, readFromClipboard } from '../utils/clipboard';
 import {
   ProgressBarConfig,
   SingleProgressBarConfig,
@@ -125,15 +126,11 @@ const ProgressBarSettingsPanel: React.FC<ProgressBarSettingsPanelProps> = ({
     onChange({ ...DEFAULT_PROGRESS_BAR_CONFIG });
   };
 
-  const handleCopyExample = () => {
+  const handleCopyExample = async () => {
     const jsonStr = JSON.stringify(EXAMPLE_CONFIG, null, 2);
-    navigator.clipboard.writeText(jsonStr).then(() => {
-      setSnackbarMessage('示例配置已复制到剪贴板');
-      setSnackbarOpen(true);
-    }).catch(() => {
-      setSnackbarMessage('复制失败');
-      setSnackbarOpen(true);
-    });
+    const ok = await copyToClipboard(jsonStr);
+    setSnackbarMessage(ok ? '示例配置已复制到剪贴板' : '复制失败');
+    setSnackbarOpen(true);
   };
 
   const handleExportConfig = () => {
@@ -175,26 +172,27 @@ const ProgressBarSettingsPanel: React.FC<ProgressBarSettingsPanelProps> = ({
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
 
-  const handlePasteConfig = () => {
-    navigator.clipboard.readText().then((text) => {
-      try {
-        const imported = JSON.parse(text) as ProgressBarConfig;
-        if (imported.top && imported.bottom) {
-          onChange(imported);
-          setSnackbarMessage('已从剪贴板导入');
-          setSnackbarOpen(true);
-        } else {
-          setSnackbarMessage('剪贴板内容无效');
-          setSnackbarOpen(true);
-        }
-      } catch {
-        setSnackbarMessage('解析失败');
-        setSnackbarOpen(true);
-      }
-    }).catch(() => {
+  const handlePasteConfig = async () => {
+    const text = await readFromClipboard();
+    if (text === null) {
       setSnackbarMessage('无法读取剪贴板');
       setSnackbarOpen(true);
-    });
+      return;
+    }
+    try {
+      const imported = JSON.parse(text) as ProgressBarConfig;
+      if (imported.top && imported.bottom) {
+        onChange(imported);
+        setSnackbarMessage('已从剪贴板导入');
+        setSnackbarOpen(true);
+      } else {
+        setSnackbarMessage('剪贴板内容无效');
+        setSnackbarOpen(true);
+      }
+    } catch {
+      setSnackbarMessage('解析失败');
+      setSnackbarOpen(true);
+    }
   };
 
   const renderSingleProgressBarEditor = (position: TabPosition) => {
