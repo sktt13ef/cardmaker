@@ -24,34 +24,26 @@ const LineArtSlate: React.FC<LineArtSlateProps> = ({ data, scale, progressBarCon
     if (!wrapperRef.current || !titleRef.current) return;
     const wrapper = wrapperRef.current;
     const title = titleRef.current;
-    const fitTitle = () => {
-      let size = titleConfig.initialFontSize;
-      title.style.fontSize = size + 'px';
-      let guard = 0;
-      while (title.scrollWidth > 1700 && size > titleConfig.minFontSize && guard < 100) { size -= 1; title.style.fontSize = size + 'px'; guard++; }
-    };
+    const fitTitle = () => { let size = titleConfig.initialFontSize; title.style.fontSize = size + 'px'; let guard = 0; while (title.scrollWidth > 1700 && size > titleConfig.minFontSize && guard < 100) { size -= 1; title.style.fontSize = size + 'px'; guard++; } };
     fitTitle();
-    const fitViewport = () => {
-      const maxH = 1040;
-      if (wrapper.scrollHeight > maxH) { wrapper.style.transform = 'scale(' + Math.max(0.6, maxH / wrapper.scrollHeight) + ')'; }
-      else { wrapper.style.transform = ''; }
-    };
+    const fitViewport = () => { const maxH = 1040; if (wrapper.scrollHeight > maxH) { wrapper.style.transform = 'scale(' + Math.max(0.6, maxH / wrapper.scrollHeight) + ')'; } else { wrapper.style.transform = ''; } };
     const timer = window.setTimeout(fitViewport, 50);
     return () => window.clearTimeout(timer);
   }, [data, titleConfig]);
 
   const topConfig = progressBarConfig?.top;
   const bottomConfig = progressBarConfig?.bottom;
+
   const renderProgressBar = (position: 'top' | 'bottom') => {
     const config = position === 'top' ? topConfig : bottomConfig;
     if (!config?.show) return null;
     return (
-      <div style={{ width: '100%', padding: '16px 48px', background: '#f9fafb' }}>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <div style={{ width: '100%', padding: '16px 48px', background: '#f0f0f2' }}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
           {config.segmentLabels.slice(0, config.segmentCount).map((label, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 24, height: 4, borderRadius: 2, background: index <= config.activeIndex ? '#5a6570' : '#e0e0e0', opacity: index <= config.activeIndex ? 0.8 : 0.3 }} />
-              <span style={{ fontSize: '26px', fontWeight: 500, color: index <= config.activeIndex ? '#111122' : '#888899' }}>{label}</span>
+            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <div style={{ width: 18, height: 18, background: index <= config.activeIndex ? '#4a4a5a' : 'transparent', border: '1px solid ' + (index <= config.activeIndex ? '#4a4a5a' : '#c8c8d0'), opacity: index <= config.activeIndex ? 0.6 : 0.3 }} />
+              <span style={{ fontSize: '26px', fontWeight: 400, color: index <= config.activeIndex ? '#111122' : '#888899' }}>{label}</span>
             </div>
           ))}
         </div>
@@ -59,45 +51,68 @@ const LineArtSlate: React.FC<LineArtSlateProps> = ({ data, scale, progressBarCon
     );
   };
 
-  const accentColor = '#5a6570';
-  const innerPadding = isSingleCard ? '40px 64px' : '32px 56px';
-  const topMargin = isSingleCard ? '32px' : '28px';
-  const cardPadding = isSingleCard ? '32px 36px' : '24px 28px';
-  const gridGap = isSingleCard ? '28px' : '24px';
+  const slate = '#4a4a5a';
+  const steel = '#6a6a7a';
+  const silver = '#9a9aa8';
 
   return (
-    <div style={{ width: 1920, height: 1080, transform: 'scale(' + scale + ')', transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif', background: '#f9fafb' }}>
+    <div style={{ width: 1920, height: 1080, transform: 'scale(' + scale + ')', transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif', background: '#f0f0f2' }}>
       {renderProgressBar('top')}
-      <div ref={wrapperRef} style={{ flex: 1, padding: innerPadding, display: 'flex', flexDirection: 'column', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 20, right: 40, opacity: 0.15 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="28" stroke={accentColor} strokeWidth="0.8" fill="none" />
-            <circle cx="32" cy="32" r="16" stroke={accentColor} strokeWidth="0.5" fill="none" opacity="0.5" />
-          </svg>
-        </div>
-        <div style={{ position: 'absolute', bottom: 30, left: 40, opacity: 0.1 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <line x1="4" y1="32" x2="60" y2="32" stroke={accentColor} strokeWidth="0.8" />
-            <line x1="32" y1="4" x2="32" y2="60" stroke={accentColor} strokeWidth="0.5" opacity="0.5" />
-          </svg>
-        </div>
-        <div style={{ marginBottom: topMargin, display: 'flex', alignItems: 'center', gap: 16 }}>
-          <div style={{ width: 48, height: 2, background: accentColor, flexShrink: 0 }} />
-          <h1 ref={titleRef} style={{ fontSize: isSingleCard ? '80px' : (titleConfig.initialFontSize + 10) + 'px', fontWeight: 300, letterSpacing: '-0.01em', lineHeight: 1.2, color: '#111122', margin: 0 }}>{data.mainTitle}</h1>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gap: gridGap, alignItems: 'start' }}>
-          {data.cards.slice(0, N).map((card, i) => (
-            <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: cardPadding, background: '#FFFFFF', borderRadius: 4, boxShadow: '0 1px 4px rgba(90,101,112,0.06)', border: '1px solid rgba(90,101,112,0.12)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: 28, height: 28, borderRadius: '50%', border: '2px solid ' + accentColor, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontSize: isSingleCard ? '14px' : '12px', fontWeight: 600, color: accentColor }}>{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(90,101,112,0.15)' }} />
-              </div>
-              <h3 style={{ fontSize: isSingleCard ? '48px' : '34px', fontWeight: 400, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</h3>
-              <p style={{ fontSize: isSingleCard ? '32px' : '26px', color: '#444455', lineHeight: 1.8, margin: 0 }} dangerouslySetInnerHTML={{ __html: card.desc }} />
-            </div>
+      <div ref={wrapperRef} style={{ flex: 1, padding: isSingleCard ? '40px 64px' : '32px 56px', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+        <svg viewBox="0 0 1920 1080" fill="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+          {/* Stone texture lines - horizontal stratification */}
+          {[0, 1, 2, 3, 4, 5].map(i => (
+            <line key={'h' + i} x1="0" y1={100 + i * 180} x2="300" y2={100 + i * 180} stroke={slate} strokeWidth="0.8" opacity="0.04" />
           ))}
+          {[0, 1, 2, 3, 4, 5].map(i => (
+            <line key={'hr' + i} x1="1620" y1={100 + i * 180} x2="1920" y2={100 + i * 180} stroke={slate} strokeWidth="0.8" opacity="0.04" />
+          ))}
+          {/* Stone block shapes */}
+          <rect x="1660" y="60" width="200" height="120" stroke={slate} strokeWidth="1" fill="none" opacity="0.04" />
+          <rect x="1680" y="80" width="160" height="80" stroke={steel} strokeWidth="0.6" fill="none" opacity="0.03" />
+          <rect x="40" y="840" width="180" height="100" stroke={slate} strokeWidth="1" fill="none" opacity="0.04" />
+          {/* Subtle stone wash */}
+          <rect x="0" y="0" width="250" height="1080" fill={slate} opacity="0.008" />
+          <rect x="1670" y="0" width="250" height="1080" fill={steel} opacity="0.008" />
+        </svg>
+
+        <div style={{ marginBottom: isSingleCard ? '32px' : '28px', display: 'flex', alignItems: 'center', gap: 20 }}>
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
+            <rect x="6" y="6" width="44" height="44" stroke={slate} strokeWidth="2" fill={slate} fillOpacity="0.04" />
+            <rect x="14" y="14" width="28" height="28" stroke={steel} strokeWidth="1" fill="none" opacity="0.4" />
+            <line x1="6" y1="28" x2="50" y2="28" stroke={silver} strokeWidth="0.5" opacity="0.3" />
+          </svg>
+          <div>
+            <div style={{ display: 'flex', gap: 4, marginBottom: 8 }}>
+              {[0, 1, 2, 3, 4].map(j => (
+                <div key={j} style={{ width: 30, height: 2, background: slate, opacity: 0.15 + j * 0.03 }} />
+              ))}
+            </div>
+            <h1 ref={titleRef} style={{ fontSize: isSingleCard ? '80px' : (titleConfig.initialFontSize + 10) + 'px', fontWeight: 400, letterSpacing: '-0.01em', lineHeight: 1.2, color: '#111122', margin: 0 }}>{data.mainTitle}</h1>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gap: isSingleCard ? '28px' : '24px', alignItems: 'start' }}>
+          {data.cards.slice(0, N).map((card, i) => {
+            const colors = [slate, steel, silver];
+            const c = colors[i % 3];
+            return (
+              <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: isSingleCard ? '32px 36px' : '24px 28px', background: '#FFFFFF', borderRadius: 2, border: '1px solid rgba(74,74,90,0.12)', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <div style={{ width: 34, height: 34, background: c, opacity: 0.1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span style={{ fontSize: isSingleCard ? '14px' : '12px', fontWeight: 400, color: slate }}>{String(i + 1).padStart(2, '0')}</span>
+                  </div>
+                  <div style={{ flex: 1, display: 'flex', gap: 3, alignItems: 'center' }}>
+                    {[0, 1, 2, 3, 4, 5, 6, 7, 8].map(j => (
+                      <div key={j} style={{ flex: 1, height: '1.5px', background: c, opacity: 0.1 }} />
+                    ))}
+                  </div>
+                </div>
+                <h3 style={{ fontSize: isSingleCard ? '48px' : '34px', fontWeight: 400, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</h3>
+                <p style={{ fontSize: isSingleCard ? '32px' : '26px', color: '#444455', lineHeight: 1.8, margin: 0 }} dangerouslySetInnerHTML={{ __html: card.desc }} />
+              </div>
+            );
+          })}
         </div>
       </div>
       {renderProgressBar('bottom')}
@@ -107,9 +122,9 @@ const LineArtSlate: React.FC<LineArtSlateProps> = ({ data, scale, progressBarCon
 
 export const lineArtSlate: TemplateConfig = {
   id: 'lineArtSlate',
-  name: '石板灰调',
-  description: '石板灰冷峻线条，理性克制',
-  icon: 'layers',
+  name: '石板灰',
+  description: '灰色调石材纹理，沉稳大气',
+  icon: 'crop_square',
   render: (data, scale, progressBarConfig) => React.createElement(LineArtSlate, { data, scale, progressBarConfig }),
   generateHtml: (data) => generateDownloadableHtml(data, 'lineArtSlate'),
 };

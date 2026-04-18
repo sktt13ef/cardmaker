@@ -42,15 +42,19 @@ const LineArtConstruct: React.FC<LineArtConstructProps> = ({ data, scale, progre
 
   const topConfig = progressBarConfig?.top;
   const bottomConfig = progressBarConfig?.bottom;
+
   const renderProgressBar = (position: 'top' | 'bottom') => {
     const config = position === 'top' ? topConfig : bottomConfig;
     if (!config?.show) return null;
     return (
-      <div style={{ width: '100%', padding: '16px 48px', background: '#faf8f7' }}>
-        <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <div style={{ width: '100%', padding: '16px 48px', background: '#f0f0f0' }}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
           {config.segmentLabels.slice(0, config.segmentCount).map((label, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ width: 24, height: 4, borderRadius: 2, background: index <= config.activeIndex ? '#cc2936' : '#e0e0e0', opacity: index <= config.activeIndex ? 0.8 : 0.3 }} />
+            <div key={index} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <line x1="0" y1="20" x2="20" y2="0" stroke={index <= config.activeIndex ? '#c03020' : '#ccc'} strokeWidth="2" />
+                <circle cx="10" cy="10" r="4" stroke={index <= config.activeIndex ? '#2020c0' : '#ccc'} strokeWidth="1" fill="none" />
+              </svg>
               <span style={{ fontSize: '26px', fontWeight: 500, color: index <= config.activeIndex ? '#111122' : '#888899' }}>{label}</span>
             </div>
           ))}
@@ -59,45 +63,88 @@ const LineArtConstruct: React.FC<LineArtConstructProps> = ({ data, scale, progre
     );
   };
 
-  const accentColor = '#cc2936';
-  const innerPadding = isSingleCard ? '40px 64px' : '32px 56px';
-  const topMargin = isSingleCard ? '32px' : '28px';
-  const cardPadding = isSingleCard ? '32px 36px' : '24px 28px';
-  const gridGap = isSingleCard ? '28px' : '24px';
+  const red = '#c03020';
+  const blue = '#2020c0';
+  const black = '#111111';
+  const gray = '#606060';
 
   return (
-    <div style={{ width: 1920, height: 1080, transform: 'scale(' + scale + ')', transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif', background: '#faf8f7' }}>
+    <div style={{ width: 1920, height: 1080, transform: 'scale(' + scale + ')', transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", Roboto, sans-serif', background: '#f0f0f0' }}>
       {renderProgressBar('top')}
-      <div ref={wrapperRef} style={{ flex: 1, padding: innerPadding, display: 'flex', flexDirection: 'column', position: 'relative' }}>
-        <div style={{ position: 'absolute', top: 20, right: 40, opacity: 0.15 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <circle cx="32" cy="32" r="28" stroke={accentColor} strokeWidth="0.8" fill="none" />
-            <circle cx="32" cy="32" r="16" stroke={accentColor} strokeWidth="0.5" fill="none" opacity="0.5" />
+      <div ref={wrapperRef} style={{ flex: 1, padding: isSingleCard ? '40px 64px' : '32px 56px', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+        {/* Constructivism full-screen diagonal lines, circle intersections, industrial */}
+        <svg viewBox="0 0 1920 1080" fill="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
+          {/* Diagonal lines - top left to bottom right */}
+          <line x1="0" y1="0" x2="600" y2="600" stroke={red} strokeWidth="2" opacity="0.06" />
+          <line x1="200" y1="0" x2="800" y2="600" stroke={black} strokeWidth="1.5" opacity="0.05" />
+          <line x1="0" y1="200" x2="400" y2="600" stroke={blue} strokeWidth="1.5" opacity="0.05" />
+          {/* Diagonal lines - top right to bottom left */}
+          <line x1="1920" y1="0" x2="1320" y2="600" stroke={red} strokeWidth="2" opacity="0.06" />
+          <line x1="1720" y1="0" x2="1120" y2="600" stroke={black} strokeWidth="1.5" opacity="0.05" />
+          <line x1="1920" y1="200" x2="1520" y2="600" stroke={blue} strokeWidth="1.5" opacity="0.05" />
+          {/* Circle intersections */}
+          <circle cx="960" cy="300" r="120" stroke={red} strokeWidth="2" fill="none" opacity="0.05" />
+          <circle cx="960" cy="300" r="80" stroke={blue} strokeWidth="1.5" fill="none" opacity="0.05" />
+          <circle cx="960" cy="300" r="40" stroke={black} strokeWidth="1" fill={red} fillOpacity="0.02" opacity="0.05" />
+          {/* Industrial circles - bottom */}
+          <circle cx="300" cy="850" r="100" stroke={black} strokeWidth="2" fill="none" opacity="0.04" />
+          <circle cx="300" cy="850" r="60" stroke={gray} strokeWidth="1" fill="none" opacity="0.04" />
+          <circle cx="1600" cy="800" r="80" stroke={red} strokeWidth="1.5" fill="none" opacity="0.04" />
+          {/* Diagonal structural lines */}
+          <line x1="0" y1="800" x2="400" y2="1080" stroke={blue} strokeWidth="1.5" opacity="0.04" />
+          <line x1="1520" y1="800" x2="1920" y2="1080" stroke={red} strokeWidth="1.5" opacity="0.04" />
+          {/* Cross-hatched area */}
+          <line x1="1400" y1="100" x2="1500" y2="200" stroke={black} strokeWidth="0.8" opacity="0.04" />
+          <line x1="1420" y1="100" x2="1520" y2="200" stroke={black} strokeWidth="0.8" opacity="0.04" />
+          <line x1="1440" y1="100" x2="1540" y2="200" stroke={black} strokeWidth="0.8" opacity="0.04" />
+          <line x1="1400" y1="120" x2="1500" y2="220" stroke={black} strokeWidth="0.8" opacity="0.04" />
+        </svg>
+
+        {/* Title with constructivist diagonal decoration */}
+        <div style={{ marginBottom: isSingleCard ? '32px' : '28px', display: 'flex', alignItems: 'center', gap: 20 }}>
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" style={{ flexShrink: 0 }}>
+            <line x1="0" y1="56" x2="56" y2="0" stroke={red} strokeWidth="2" />
+            <circle cx="28" cy="28" r="16" stroke={blue} strokeWidth="1.5" fill="none" />
+            <circle cx="28" cy="28" r="6" fill={red} opacity="0.3" />
           </svg>
+          <div>
+            {/* Diagonal line decoration above title */}
+            <svg width="180" height="10" viewBox="0 0 180 10" fill="none" style={{ marginBottom: 6 }}>
+              <line x1="0" y1="10" x2="180" y2="0" stroke={red} strokeWidth="1.5" opacity="0.4" />
+              <line x1="20" y1="10" x2="180" y2="2" stroke={blue} strokeWidth="1" opacity="0.3" />
+            </svg>
+            <h1 ref={titleRef} style={{ fontSize: isSingleCard ? '80px' : (titleConfig.initialFontSize + 10) + 'px', fontWeight: 500, letterSpacing: '-0.01em', lineHeight: 1.2, color: '#111122', margin: 0 }}>{data.mainTitle}</h1>
+          </div>
         </div>
-        <div style={{ position: 'absolute', bottom: 30, left: 40, opacity: 0.1 }}>
-          <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-            <line x1="4" y1="32" x2="60" y2="32" stroke={accentColor} strokeWidth="0.8" />
-            <line x1="32" y1="4" x2="32" y2="60" stroke={accentColor} strokeWidth="0.5" opacity="0.5" />
-          </svg>
-        </div>
-        <div style={{ marginBottom: topMargin, display: 'flex', alignItems: 'center', gap: 16 }}>
-          <div style={{ width: 48, height: 2, background: accentColor, flexShrink: 0 }} />
-          <h1 ref={titleRef} style={{ fontSize: isSingleCard ? '80px' : (titleConfig.initialFontSize + 10) + 'px', fontWeight: 300, letterSpacing: '-0.01em', lineHeight: 1.2, color: '#111122', margin: 0 }}>{data.mainTitle}</h1>
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gap: gridGap, alignItems: 'start' }}>
-          {data.cards.slice(0, N).map((card, i) => (
-            <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: cardPadding, background: '#FFFFFF', borderRadius: 4, boxShadow: '0 1px 4px rgba(204,41,54,0.06)', border: '1px solid rgba(204,41,54,0.12)' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: 28, height: 28, borderRadius: '50%', border: '2px solid ' + accentColor, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span style={{ fontSize: isSingleCard ? '14px' : '12px', fontWeight: 600, color: accentColor }}>{String(i + 1).padStart(2, '0')}</span>
+
+        {/* Cards with constructivist industrial style */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(' + cols + ', 1fr)', gap: isSingleCard ? '28px' : '24px', alignItems: 'start' }}>
+          {data.cards.slice(0, N).map((card, i) => {
+            const colors = [red, blue, black, gray];
+            const c = colors[i % 4];
+            return (
+              <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: '14px', padding: isSingleCard ? '32px 36px' : '24px 28px', background: '#FFFFFF', borderRadius: 0, border: '2px solid ' + c, position: 'relative' }}>
+                {/* Diagonal accent corner */}
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" style={{ position: 'absolute', top: 0, right: 0, opacity: 0.15 }}>
+                  <line x1="30" y1="0" x2="0" y2="30" stroke={c} strokeWidth="2" />
+                </svg>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  {/* Circle-cross number indicator */}
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" style={{ flexShrink: 0 }}>
+                    <circle cx="18" cy="18" r="15" stroke={c} strokeWidth="1.5" fill="none" />
+                    <line x1="6" y1="30" x2="30" y2="6" stroke={c} strokeWidth="1" opacity="0.4" />
+                    <text x="18" y="22" textAnchor="middle" fontSize="11" fontWeight="600" fill={c}>{String(i + 1).padStart(2, '0')}</text>
+                  </svg>
+                  {/* Diagonal separator */}
+                  <svg width="100%" height="8" viewBox="0 0 200 8" fill="none" style={{ flex: 1 }}>
+                    <line x1="0" y1="8" x2="200" y2="0" stroke={c} strokeWidth="1" opacity="0.15" />
+                  </svg>
                 </div>
-                <div style={{ flex: 1, height: '1px', background: 'rgba(204,41,54,0.15)' }} />
+                <h3 style={{ fontSize: isSingleCard ? '48px' : '34px', fontWeight: 500, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</h3>
+                <p style={{ fontSize: isSingleCard ? '32px' : '26px', color: '#444455', lineHeight: 1.8, margin: 0 }} dangerouslySetInnerHTML={{ __html: card.desc }} />
               </div>
-              <h3 style={{ fontSize: isSingleCard ? '48px' : '34px', fontWeight: 400, color: '#111122', margin: 0, lineHeight: 1.4 }}>{card.title}</h3>
-              <p style={{ fontSize: isSingleCard ? '32px' : '26px', color: '#444455', lineHeight: 1.8, margin: 0 }} dangerouslySetInnerHTML={{ __html: card.desc }} />
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       {renderProgressBar('bottom')}
@@ -108,8 +155,8 @@ const LineArtConstruct: React.FC<LineArtConstructProps> = ({ data, scale, progre
 export const lineArtConstruct: TemplateConfig = {
   id: 'lineArtConstruct',
   name: '构成主义',
-  description: '红色斜线构成，革命先锋',
-  icon: 'change_history',
+  description: '斜线圆形交叉，工业力量感',
+  icon: 'engineering',
   render: (data, scale, progressBarConfig) => React.createElement(LineArtConstruct, { data, scale, progressBarConfig }),
   generateHtml: (data) => generateDownloadableHtml(data, 'lineArtConstruct'),
 };
