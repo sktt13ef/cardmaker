@@ -8,6 +8,12 @@ export interface ThemeCategory {
 }
 
 export const THEME_CATEGORIES: ThemeCategory[] = [
+  // 极简线条 - 10个线条装饰模板
+  { id: 'minimal-line', name: '极简线条', icon: 'horizontal_rule', themeIds: ['lineFine', 'lineDashed', 'lineCorner', 'lineOrbit', 'lineFlow', 'lineGrid', 'lineCross', 'lineParallel', 'lineDiamond', 'lineSpiral', 'lineRadiant', 'lineMountain', 'lineDotline', 'lineWavecut', 'lineFrameArt', 'lineDotmatrix', 'lineDashflow', 'lineZigzag'] },
+
+  // 简约线条
+  { id: 'simple-line', name: '简约线条', icon: 'remove', themeIds: ['lineMinimal', 'lineGridCard', 'lineFrame', 'lineAccent', 'lineBox', 'lineDivider'] },
+
   // 精选推荐 - 最简洁美观的模板
   { id: 'curated', name: '精选推荐', icon: 'star', themeIds: ['grandElegant', 'minimalClean', 'modernCard', 'materialYou', 'claudeStyle', 'glassmorphism', 'neumorphism', 'bentoGrid', 'flatDesign', 'swissStyle', 'newsCard'] },
   

@@ -6,6 +6,7 @@ import {
   calculateStandardLayout,
   getStandardTitleConfig,
 } from '../utils/layout-calculator';
+import { ProgressBarConfig } from '../types/progress-bar';
 
 /**
  * Glassmorphism 模板 - 玻璃拟态
@@ -18,9 +19,10 @@ import {
 interface GlassmorphismProps {
   data: GeneratedContent;
   scale: number;
+  progressBarConfig?: ProgressBarConfig;
 }
 
-const Glassmorphism: React.FC<GlassmorphismProps> = ({ data, scale }) => {
+const Glassmorphism: React.FC<GlassmorphismProps> = ({ data, scale, progressBarConfig }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -62,8 +64,51 @@ const Glassmorphism: React.FC<GlassmorphismProps> = ({ data, scale }) => {
     return () => window.clearTimeout(timer);
   }, [data, titleConfig]);
 
+  const topConfig = progressBarConfig?.top;
+  const bottomConfig = progressBarConfig?.bottom;
+
+  const renderProgressBar = (position: 'top' | 'bottom') => {
+    const config = position === 'top' ? topConfig : bottomConfig;
+    if (!config?.show) return null;
+    const { segmentCount, segmentLabels, activeIndex } = config;
+
+    return (
+      <div style={{
+        width: '100%',
+        padding: position === 'top' ? '20px 60px 12px' : '12px 60px 20px',
+        background: 'rgba(255, 255, 255, 0.1)',
+        borderBottom: position === 'top' ? '1px solid rgba(255, 255, 255, 0.2)' : undefined,
+        borderTop: position === 'bottom' ? '1px solid rgba(255, 255, 255, 0.2)' : undefined,
+      }}>
+        <div style={{ width: '100%', height: 4, background: 'rgba(255, 255, 255, 0.3)', borderRadius: 2, display: 'flex', position: 'relative' }}>
+          <div style={{
+            position: 'absolute', left: 0, top: 0, height: '100%',
+            width: `${((activeIndex + 1) / segmentCount) * 100}%`,
+            background: '#fff', borderRadius: 2, transition: 'width 0.3s ease',
+          }} />
+          {Array.from({ length: segmentCount - 1 }, (_, i) => (
+            <div key={i} style={{
+              position: 'absolute', left: `${((i + 1) / segmentCount) * 100}%`,
+              top: 0, width: 2, height: '100%', background: 'rgba(255, 255, 255, 0.5)', transform: 'translateX(-50%)',
+            }} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+          {segmentLabels.slice(0, segmentCount).map((label, index) => (
+            <div key={index} style={{
+              flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
+              color: index <= activeIndex ? '#fff' : 'rgba(255, 255, 255, 0.6)', transition: 'color 0.3s ease',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            }}>{label}</div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden' }}>
+    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {renderProgressBar('top')}
       <style>{`
         .glass-container {
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
@@ -155,7 +200,7 @@ const Glassmorphism: React.FC<GlassmorphismProps> = ({ data, scale }) => {
         .content-scale { transform-origin: center center; }
       `}</style>
 
-      <div className="glass-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center">
+      <div className="glass-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ flex: 1 }}>
         {/* 背景装饰 */}
         <div className="glass-orb w-96 h-96 bg-[#f093fb]" style={{ top: '-10%', left: '-5%' }}></div>
         <div className="glass-orb w-80 h-80 bg-[#4facfe]" style={{ bottom: '-10%', right: '-5%' }}></div>
@@ -213,6 +258,7 @@ const Glassmorphism: React.FC<GlassmorphismProps> = ({ data, scale }) => {
           </div>
         </div>
       </div>
+      {renderProgressBar('bottom')}
     </div>
   );
 };
@@ -222,6 +268,6 @@ export const glassmorphismTemplate: TemplateConfig = {
   name: '玻璃拟态',
   description: '通透轻盈的玻璃拟态风格，半透明效果，现代优雅',
   icon: 'blur_on',
-  render: (data, scale) => React.createElement(Glassmorphism, { data, scale }),
+  render: (data, scale, progressBarConfig) => React.createElement(Glassmorphism, { data, scale, progressBarConfig }),
   generateHtml: (data) => generateDownloadableHtml(data, 'glassmorphism'),
 };

@@ -8,6 +8,7 @@ import {
   generateTitleFitScript,
   generateViewportFitScript,
 } from '../utils/layout-calculator';
+import { ProgressBarConfig } from '../types/progress-bar';
 
 /**
  * GrandElegant 模板 - 大气优雅
@@ -20,6 +21,7 @@ import {
 interface GrandElegantProps {
   data: GeneratedContent;
   scale: number;
+  progressBarConfig?: ProgressBarConfig;
 }
 
 // 克制的配色方案 - 仅使用灰度 + 一个强调色
@@ -33,7 +35,7 @@ const ELEGANT_COLORS = {
   cardBg: '#fafafa',
 };
 
-const GrandElegant: React.FC<GrandElegantProps> = ({ data, scale }) => {
+const GrandElegant: React.FC<GrandElegantProps> = ({ data, scale, progressBarConfig }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -75,8 +77,51 @@ const GrandElegant: React.FC<GrandElegantProps> = ({ data, scale }) => {
     return () => window.clearTimeout(timer);
   }, [data, titleConfig]);
 
+  const topConfig = progressBarConfig?.top;
+  const bottomConfig = progressBarConfig?.bottom;
+
+  const renderProgressBar = (position: 'top' | 'bottom') => {
+    const config = position === 'top' ? topConfig : bottomConfig;
+    if (!config?.show) return null;
+    const { segmentCount, segmentLabels, activeIndex } = config;
+
+    return (
+      <div style={{
+        width: '100%',
+        padding: position === 'top' ? '20px 60px 12px' : '12px 60px 20px',
+        background: '#fff',
+        borderBottom: position === 'top' ? '1px solid #e5e7eb' : undefined,
+        borderTop: position === 'bottom' ? '1px solid #e5e7eb' : undefined,
+      }}>
+        <div style={{ width: '100%', height: 4, background: '#e5e7eb', borderRadius: 2, display: 'flex', position: 'relative' }}>
+          <div style={{
+            position: 'absolute', left: 0, top: 0, height: '100%',
+            width: `${((activeIndex + 1) / segmentCount) * 100}%`,
+            background: '#2563eb', borderRadius: 2, transition: 'width 0.3s ease',
+          }} />
+          {Array.from({ length: segmentCount - 1 }, (_, i) => (
+            <div key={i} style={{
+              position: 'absolute', left: `${((i + 1) / segmentCount) * 100}%`,
+              top: 0, width: 2, height: '100%', background: '#fff', transform: 'translateX(-50%)',
+            }} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+          {segmentLabels.slice(0, segmentCount).map((label, index) => (
+            <div key={index} style={{
+              flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
+              color: index <= activeIndex ? '#2563eb' : '#9ca3af', transition: 'color 0.3s ease',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            }}>{label}</div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden' }}>
+    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {renderProgressBar('top')}
       <style>{`
         .grand-container {
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', system-ui, sans-serif;
@@ -160,7 +205,7 @@ const GrandElegant: React.FC<GrandElegantProps> = ({ data, scale }) => {
         .content-scale { transform-origin: center center; }
       `}</style>
 
-      <div className="grand-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center">
+      <div className="grand-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ flex: 1 }}>
         <div
           ref={wrapperRef}
           className="content-wrapper w-full flex flex-col items-center px-32 box-border content-scale"
@@ -214,6 +259,7 @@ const GrandElegant: React.FC<GrandElegantProps> = ({ data, scale }) => {
           </div>
         </div>
       </div>
+      {renderProgressBar('bottom')}
     </div>
   );
 };
@@ -223,6 +269,6 @@ export const grandElegantTemplate: TemplateConfig = {
   name: '大气优雅',
   description: '简洁大气的优雅风格，纯白背景配克制配色，清晰易读',
   icon: 'star',
-  render: (data, scale) => React.createElement(GrandElegant, { data, scale }),
+  render: (data, scale, progressBarConfig) => React.createElement(GrandElegant, { data, scale, progressBarConfig }),
   generateHtml: (data) => generateDownloadableHtml(data, 'grandElegant'),
 };

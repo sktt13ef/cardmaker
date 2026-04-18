@@ -1,5 +1,6 @@
-import { GeneratedContent } from '../types';
+export type { GeneratedContent } from '../types';
 import type { ReactElement } from 'react';
+import type { ProgressBarConfig } from '../types/progress-bar';
 
 /**
  * 模板配置接口
@@ -32,14 +33,15 @@ export interface TemplateConfig {
    * 渲染函数：将数据渲染为 JSX
    * @param data - AI 生成的内容数据
    * @param scale - 预览缩放比例
+   * @param progressBarConfig - 进度条配置（可选）
    */
-  render: (data: GeneratedContent, scale: number) => ReactElement;
+  render: (data: import('../types').GeneratedContent, scale: number, progressBarConfig?: ProgressBarConfig) => ReactElement;
 
   /**
    * 生成下载 HTML 的函数（可选）
    * @param data - AI 生成的内容数据
    */
-  generateHtml?: (data: GeneratedContent) => string;
+  generateHtml?: (data: import('../types').GeneratedContent) => string;
 }
 
 /** 模板映射表类型 */

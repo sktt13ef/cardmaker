@@ -6,6 +6,7 @@ import {
   calculateStandardLayout,
   getStandardTitleConfig,
 } from '../utils/layout-calculator';
+import { ProgressBarConfig } from '../types/progress-bar';
 
 /**
  * Neumorphism 模板 - 新拟态
@@ -18,9 +19,10 @@ import {
 interface NeumorphismProps {
   data: GeneratedContent;
   scale: number;
+  progressBarConfig?: ProgressBarConfig;
 }
 
-const Neumorphism: React.FC<NeumorphismProps> = ({ data, scale }) => {
+const Neumorphism: React.FC<NeumorphismProps> = ({ data, scale, progressBarConfig }) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
 
@@ -62,8 +64,51 @@ const Neumorphism: React.FC<NeumorphismProps> = ({ data, scale }) => {
     return () => window.clearTimeout(timer);
   }, [data, titleConfig]);
 
+  const topConfig = progressBarConfig?.top;
+  const bottomConfig = progressBarConfig?.bottom;
+
+  const renderProgressBar = (position: 'top' | 'bottom') => {
+    const config = position === 'top' ? topConfig : bottomConfig;
+    if (!config?.show) return null;
+    const { segmentCount, segmentLabels, activeIndex } = config;
+
+    return (
+      <div style={{
+        width: '100%',
+        padding: position === 'top' ? '20px 60px 12px' : '12px 60px 20px',
+        background: '#f0f2f5',
+        borderBottom: position === 'top' ? '1px solid #d1d5db' : undefined,
+        borderTop: position === 'bottom' ? '1px solid #d1d5db' : undefined,
+      }}>
+        <div style={{ width: '100%', height: 4, background: '#d1d5db', borderRadius: 2, display: 'flex', position: 'relative' }}>
+          <div style={{
+            position: 'absolute', left: 0, top: 0, height: '100%',
+            width: `${((activeIndex + 1) / segmentCount) * 100}%`,
+            background: '#4a5568', borderRadius: 2, transition: 'width 0.3s ease',
+          }} />
+          {Array.from({ length: segmentCount - 1 }, (_, i) => (
+            <div key={i} style={{
+              position: 'absolute', left: `${((i + 1) / segmentCount) * 100}%`,
+              top: 0, width: 2, height: '100%', background: '#f0f2f5', transform: 'translateX(-50%)',
+            }} />
+          ))}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 8 }}>
+          {segmentLabels.slice(0, segmentCount).map((label, index) => (
+            <div key={index} style={{
+              flex: 1, textAlign: 'center', fontSize: '12px', fontWeight: 500,
+              color: index <= activeIndex ? '#4a5568' : '#9ca3af', transition: 'color 0.3s ease',
+              fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+            }}>{label}</div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden' }}>
+    <div style={{ width: 1920, height: 1080, transform: `scale(${scale})`, transformOrigin: 'top left', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+      {renderProgressBar('top')}
       <style>{`
         .neu-container {
           font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', system-ui, sans-serif;
@@ -152,7 +197,7 @@ const Neumorphism: React.FC<NeumorphismProps> = ({ data, scale }) => {
         .content-scale { transform-origin: center center; }
       `}</style>
 
-      <div className="neu-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center">
+      <div className="neu-container relative box-border w-full h-full overflow-hidden flex flex-col items-center justify-center" style={{ flex: 1 }}>
         <div
           ref={wrapperRef}
           className="content-wrapper w-full flex flex-col items-center px-32 box-border content-scale"
@@ -206,6 +251,7 @@ const Neumorphism: React.FC<NeumorphismProps> = ({ data, scale }) => {
           </div>
         </div>
       </div>
+      {renderProgressBar('bottom')}
     </div>
   );
 };
@@ -215,6 +261,6 @@ export const neumorphismTemplate: TemplateConfig = {
   name: '新拟态',
   description: '柔和立体的新拟态风格，阴影驱动，现代优雅',
   icon: 'contrast',
-  render: (data, scale) => React.createElement(Neumorphism, { data, scale }),
+  render: (data, scale, progressBarConfig) => React.createElement(Neumorphism, { data, scale, progressBarConfig }),
   generateHtml: (data) => generateDownloadableHtml(data, 'neumorphism'),
 };

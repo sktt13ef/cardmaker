@@ -1770,6 +1770,86 @@
       "icon": "auto_awesome",
       "downloadable": true,
       "ssrReady": true
+    },
+    "lineFine": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineFine.tsx",
+      "fileSize": 6800,
+      "name": "细线雅致",
+      "description": "极细线条分割，大量留白，优雅精致",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineDashed": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineDashed.tsx",
+      "fileSize": 6800,
+      "name": "虚线韵律",
+      "description": "虚线装饰元素，轻盈节奏感，简约不失精致",
+      "icon": "horizontal_rule",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineCorner": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineCorner.tsx",
+      "fileSize": 7200,
+      "name": "折角框架",
+      "description": "L形折角线条框定内容，几何感强，结构清晰",
+      "icon": "crop_square",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineOrbit": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineOrbit.tsx",
+      "fileSize": 7200,
+      "name": "同心圆环",
+      "description": "同心圆线条装饰，几何韵律，简约精致",
+      "icon": "radio_button_unchecked",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineFlow": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineFlow.tsx",
+      "fileSize": 7200,
+      "name": "流动曲线",
+      "description": "柔和曲线线条，优雅流动，艺术感强",
+      "icon": "show_chart",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineGrid": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineGrid.tsx",
+      "fileSize": 6800,
+      "name": "网格矩阵",
+      "description": "网格线条分割，结构化布局，秩序感强",
+      "icon": "grid_on",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineCross": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineCross.tsx",
+      "fileSize": 7200,
+      "name": "十字分割",
+      "description": "十字线交叉分割，对称美学，结构感强",
+      "icon": "add",
+      "downloadable": true,
+      "ssrReady": true
+    },
+    "lineParallel": {
+      "modifiedTime": 1776380883,
+      "filePath": "src/templates/minimal-line/lineParallel.tsx",
+      "fileSize": 7200,
+      "name": "平行线谱",
+      "description": "多条平行线构成节奏，简约有韵律",
+      "icon": "format_align_left",
+      "downloadable": true,
+      "ssrReady": true
     }
   }
 }

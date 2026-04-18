@@ -73,6 +73,36 @@ import { outlineStrokeTemplate } from './outlineStroke';
 import { hyperMinimalTemplate } from './hyperMinimal';
 import { springFestivalStyleTemplate } from './springFestival';
 
+// 极简线条模板 - 8个
+import { lineFineTemplate } from './minimal-line/lineFine';
+import { lineDashedTemplate } from './minimal-line/lineDashed';
+import { lineCornerTemplate } from './minimal-line/lineCorner';
+import { lineOrbitTemplate } from './minimal-line/lineOrbit';
+import { lineFlowTemplate } from './minimal-line/lineFlow';
+import { lineGridTemplate } from './minimal-line/lineGrid';
+import { lineCrossTemplate } from './minimal-line/lineCross';
+import { lineParallelTemplate } from './minimal-line/lineParallel';
+
+// 极简线条模板 - 新增10个
+import { lineDiamond } from './minimal-line/lineDiamond';
+import { lineSpiral } from './minimal-line/lineSpiral';
+import { lineRadiant } from './minimal-line/lineRadiant';
+import { lineMountain } from './minimal-line/lineMountain';
+import { lineDotline } from './minimal-line/lineDotline';
+import { lineWavecut } from './minimal-line/lineWavecut';
+import { lineFrameArt } from './minimal-line/lineFrame';
+import { lineDotmatrix } from './minimal-line/lineDotmatrix';
+import { lineDashflow } from './minimal-line/lineDashflow';
+import { lineZigzag } from './minimal-line/lineZigzag';
+
+// 简约线条模板
+import { lineMinimalTemplate } from './lineMinimal';
+import { lineGridCardTemplate } from './lineGridCard';
+import { lineFrameTemplate } from './lineFrame';
+import { lineAccentTemplate } from './lineAccent';
+import { lineBoxTemplate } from './lineBox';
+import { lineDividerTemplate } from './lineDivider';
+
 // G1类：摄影与视觉叙事 (5个) - 新增
 import { cinematicFilmTemplate } from './cinematicFilm';
 import { filmGrainAnalogTemplate } from './filmGrainAnalog';
@@ -498,6 +528,36 @@ export const TEMPLATES: TemplateMap = {
   minimalClean: minimalCleanTemplate,
   modernCard: modernCardTemplate,
   grandElegant: grandElegantTemplate,
+
+  // 极简线条模板 - 8个
+  lineFine: lineFineTemplate,
+  lineDashed: lineDashedTemplate,
+  lineCorner: lineCornerTemplate,
+  lineOrbit: lineOrbitTemplate,
+  lineFlow: lineFlowTemplate,
+  lineGrid: lineGridTemplate,
+  lineCross: lineCrossTemplate,
+  lineParallel: lineParallelTemplate,
+
+  // 极简线条模板 - 新增10个
+  lineDiamond: lineDiamond,
+  lineSpiral: lineSpiral,
+  lineRadiant: lineRadiant,
+  lineMountain: lineMountain,
+  lineDotline: lineDotline,
+  lineWavecut: lineWavecut,
+  lineFrameArt: lineFrameArt,
+  lineDotmatrix: lineDotmatrix,
+  lineDashflow: lineDashflow,
+  lineZigzag: lineZigzag,
+
+  // 简约线条模板
+  lineMinimal: lineMinimalTemplate,
+  lineGridCard: lineGridCardTemplate,
+  lineFrame: lineFrameTemplate,
+  lineAccent: lineAccentTemplate,
+  lineBox: lineBoxTemplate,
+  lineDivider: lineDividerTemplate,
 };
 
 export { DEFAULT_TEMPLATE } from './catalog';

@@ -5,6 +5,7 @@ import { GeneratedContent } from '../types';
 import { TemplateConfig } from '../templates/types';
 import { BOTTOM_RESERVED_PX } from '../utils/layout-calculator';
 import { md3Colors } from '../theme/md3-theme';
+import { ProgressBarConfig } from '../types/progress-bar';
 
 const CANVAS_WIDTH = 1920;
 const CANVAS_HEIGHT = 1080;
@@ -15,6 +16,7 @@ interface CanvasProps {
   scale: number;
   bottomReservedPx?: number;
   exportRef?: React.MutableRefObject<HTMLDivElement | null>;
+  progressBarConfig?: ProgressBarConfig;
 }
 
 const Canvas: React.FC<CanvasProps> = ({
@@ -23,6 +25,7 @@ const Canvas: React.FC<CanvasProps> = ({
   scale,
   bottomReservedPx = BOTTOM_RESERVED_PX,
   exportRef,
+  progressBarConfig,
 }) => {
   const hostRef = useRef<HTMLDivElement>(null);
   const setHostRef = useCallback((node: HTMLDivElement | null) => {
@@ -161,7 +164,7 @@ const Canvas: React.FC<CanvasProps> = ({
         position: 'relative',
       }}
     >
-      {template.render(data, scale)}
+      {template.render(data, scale, progressBarConfig)}
     </div>
   );
 };
