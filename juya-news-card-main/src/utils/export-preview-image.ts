@@ -47,6 +47,10 @@ interface GeneratePreviewImageOptions {
    * If provided, capture this element directly to keep output identical to preview.
    */
   sourceElement?: HTMLElement | null;
+  /**
+   * Progress bar config to render into the exported image.
+   */
+  progressBarConfig?: import('../types/progress-bar').ProgressBarConfig;
 }
 
 async function getSnapdom(): Promise<SnapdomFn> {
@@ -386,6 +390,7 @@ export async function generateImageFromPreview(
     waitForLayoutMs = DEFAULT_WAIT_FOR_LAYOUT_MS,
     backgroundColor = null,
     sourceElement,
+    progressBarConfig,
   } = options;
 
   const pixelRatio = clampNumber(options.pixelRatio, DEFAULT_PIXEL_RATIO, 1, 4);
@@ -447,7 +452,7 @@ export async function generateImageFromPreview(
     document.body.appendChild(container);
 
     const root = createRoot(container);
-    root.render(template.render(data, scale));
+    root.render(template.render(data, scale, progressBarConfig));
 
     cleanup = () => {
       root.unmount();

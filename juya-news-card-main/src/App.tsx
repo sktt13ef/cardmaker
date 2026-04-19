@@ -22,6 +22,7 @@ import {
   Tune,
   Image as ImageIcon,
   TextSnippet,
+  Slideshow,
 } from '@mui/icons-material';
 import { generateCardContent } from './services/openaiService';
 import { JSON_SYSTEM_PROMPT, MARKDOWN_SYSTEM_PROMPT } from './services/llm-prompt';
@@ -74,6 +75,7 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [downloadingHtml, setDownloadingHtml] = useState(false);
   const [downloadingImage, setDownloadingImage] = useState(false);
+  const [downloadingPptx, setDownloadingPptx] = useState(false);
   const [copiedJsonPrompt, setCopiedJsonPrompt] = useState(false);
   const [copiedMarkdownPrompt, setCopiedMarkdownPrompt] = useState(false);
   const [data, setData] = useState<GeneratedContent | null>(initialData);
@@ -396,6 +398,47 @@ const App: React.FC = () => {
     }
   };
 
+  const handleDownloadPptx = async () => {
+    if (!data) return;
+    if (!currentTemplate) {
+      showToast('模板仍在加载，请稍后重试。', 'warning');
+      return;
+    }
+    if (!currentTemplate.downloadable) {
+      showToast(`"${templateDisplayName}" 模板暂不支持下载。`, 'warning');
+      return;
+    }
+    const sourceData = originalContentRef.current;
+    if (!sourceData || sourceData.cards.length === 0) {
+      showToast('没有可导出的卡片页面。', 'warning');
+      return;
+    }
+    setDownloadingPptx(true);
+    try {
+      const { exportToPptx } = await import('./utils/export-pptx');
+      await exportToPptx({
+        template: currentTemplate,
+        templateId,
+        originalContent: sourceData,
+        format: globalSettings.exportFormat,
+        strategy: globalSettings.pngExportStrategy,
+        scale: 1,
+        pixelRatio: 2,
+        waitForLayoutMs: 420,
+        bottomReservedPx: globalSettings.bottomReservedPx,
+        progressBarConfig,
+        pageProgressBarIndices,
+      });
+      showToast(`已导出 ${sourceData.cards.length} 页 PPTX`, 'success');
+    } catch (error) {
+      console.error('[export] PPTX export failed.', error);
+      const message = error instanceof Error ? error.message : '未知错误';
+      showToast(`导出 PPTX 失败: ${message}`, 'error');
+    } finally {
+      setDownloadingPptx(false);
+    }
+  };
+
   const handleCopyJsonPrompt = useCallback(async () => {
     const ok = await copyToClipboard(JSON_SYSTEM_PROMPT);
     if (ok) {
@@ -635,7 +678,7 @@ const App: React.FC = () => {
                     '&:hover': { bgcolor: '#F0EEEA' },
                   }}
                   variant="text"
-                  disabled={!data || !canDownloadCurrentTemplate || downloadingHtml || downloadingImage}
+                  disabled={!data || !canDownloadCurrentTemplate || downloadingHtml || downloadingImage || downloadingPptx}
                   onClick={handleDownload}
                   startIcon={downloadingHtml ? <Refresh sx={{ animation: 'spin 1s linear infinite' }} /> : <Download />}
                 >
@@ -655,11 +698,34 @@ const App: React.FC = () => {
                     '&:hover': { bgcolor: '#3D3A36' },
                   }}
                   variant="contained"
-                  disabled={!data || !canDownloadCurrentTemplate || downloadingImage || downloadingHtml}
+                  disabled={!data || !canDownloadCurrentTemplate || downloadingImage || downloadingHtml || downloadingPptx}
                   onClick={handleDownloadImage}
                   startIcon={downloadingImage ? <Refresh sx={{ animation: 'spin 1s linear infinite' }} /> : <ImageIcon />}
                 >
                   {downloadingImage ? '渲染中...' : globalSettings.exportFormat.toUpperCase()}
+                </Button>
+              </Box>
+              <Box sx={{ display: 'flex', gap: 1.5, mt: 1.5 }}>
+                <Button
+                  fullWidth
+                  sx={{
+                    height: 40,
+                    borderRadius: 1.5,
+                    fontWeight: 600,
+                    fontSize: '0.8rem',
+                    textTransform: 'none',
+                    letterSpacing: '0.01em',
+                    bgcolor: '#C4A882',
+                    color: '#FFFFFF',
+                    '&:hover': { bgcolor: '#B8986E' },
+                    '&:disabled': { bgcolor: '#E8E6E1', color: '#B0ACA6' },
+                  }}
+                  variant="contained"
+                  disabled={!data || !canDownloadCurrentTemplate || downloadingPptx || downloadingImage || downloadingHtml}
+                  onClick={handleDownloadPptx}
+                  startIcon={downloadingPptx ? <Refresh sx={{ animation: 'spin 1s linear infinite' }} /> : <Slideshow />}
+                >
+                  {downloadingPptx ? `渲染中 (0/${originalContentRef.current?.cards.length ?? 0})...` : 'PPTX'}
                 </Button>
               </Box>
               {/* Prompt Copy Buttons */}

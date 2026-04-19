@@ -2,6 +2,7 @@ import type { ExportFormat, PngExportStrategy } from './global-settings';
 import type { ExportResult, ExportMetadata, RenderAttempt } from './export-types';
 import type { TemplateConfig } from '../templates/types';
 import type { GeneratedContent } from '../types';
+import type { ProgressBarConfig } from '../types/progress-bar';
 
 export interface ExportOptions {
   template: TemplateConfig;
@@ -15,6 +16,7 @@ export interface ExportOptions {
   bottomReservedPx?: number;
   backgroundColor?: string | null;
   sourceElement?: HTMLElement | null;
+  progressBarConfig?: ProgressBarConfig;
 }
 
 function makeFilename(templateId: string, format: ExportFormat): string {
@@ -62,6 +64,7 @@ async function executeBrowserExport(options: ExportOptions): Promise<ExportResul
     bottomReservedPx: options.bottomReservedPx,
     backgroundColor: options.backgroundColor,
     sourceElement: options.sourceElement,
+    progressBarConfig: options.progressBarConfig,
   });
 }
 
